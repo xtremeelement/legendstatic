@@ -162,6 +162,13 @@ header .menu .dropdown .sub-menu a{
     overflow: hidden;
 }
 
+@media (max-width: 767px){
+    #jumbo{
+        height: 50vh;
+    }
+}
+
+
 #jumbo .bg-image{
     position: absolute;
     background: url("backpack3.jpeg");
