@@ -62,18 +62,6 @@ jumboTL.fromTo(
     },
     '>-1.3'
 ).fromTo(
-    "#jumbo .state",
-    {
-        opacity: 0,
-        x: -200
-    },
-    {
-        opacity: 1,
-        x: 0,
-        duration: 1
-    },
-    
-).fromTo(
     "#jumbo .store-info",
     {
         opacity: 0
@@ -97,4 +85,26 @@ jumboTL.fromTo(
         stagger: .2
     },
     '>-1'
+).fromTo(
+    "#jumbo .state",
+    {
+        opacity: 0,
+        x: 400
+    },
+    {
+        opacity: 1,
+        x: 0,
+        duration: 1
+    },
+    
 )
+
+var myNav = document.querySelector("header");
+      window.onscroll = function() {
+        "use strict";
+        if (window.pageYOffset > 1) {
+          myNav.classList.add("navColor");
+        } else {
+          myNav.classList.remove("navColor");
+        }
+      };

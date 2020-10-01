@@ -63,6 +63,9 @@ html, body{
     overflow-y: scroll;
 }
 
+.navColor {
+    background-color: #515865;
+  }
 
 header{
     position: fixed;
@@ -73,6 +76,7 @@ header{
     height: 80px;
     padding: 0 100px;
     z-index: 10;
+    transition: all 1s ease-in-out;
 }
 
 header .logo a{
