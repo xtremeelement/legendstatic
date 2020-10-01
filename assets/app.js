@@ -39,7 +39,7 @@ jumboTL.fromTo(
         duration: 2
     }
 ).fromTo(
-    ".logo",
+    "header .logo",
     {
         
         opacity: 0
@@ -50,7 +50,7 @@ jumboTL.fromTo(
         duration: 1
     }
 ).fromTo(
-    ".menu",
+    "header .menu",
     {
         x: 200,
         opacity: 0
@@ -100,11 +100,71 @@ jumboTL.fromTo(
 )
 
 var myNav = document.querySelector("header");
-      window.onscroll = function() {
-        "use strict";
-        if (window.pageYOffset > 1) {
-          myNav.classList.add("navColor");
-        } else {
-          myNav.classList.remove("navColor");
+window.onscroll = function() {
+    "use strict";
+    if (window.pageYOffset > 1) {
+        myNav.classList.add("navColor");
+    } else {
+        myNav.classList.remove("navColor");
+    }
+};
+
+// document.querySelector(".close-mobile-menu").addEventListener('click', ()=>{
+//     document.querySelector("#mobile-menu").classList.remove("active");
+// });
+
+// document.querySelector(".open-mobile-menu").addEventListener('click', ()=>{
+//     document.querySelector("#mobile-menu").classList.add("active");
+// });
+
+const mobileMenutTL = gsap.timeline({
+    paused: true
+});
+
+mobileMenutTL
+    .fromTo(
+        "#mobile-menu",
+        {
+            x: "-100%"
+        },
+        {
+            x: 0
         }
-      };
+    ).fromTo(
+        "#mobile-menu .menu .link",
+        {
+            y: 50,
+            opacity: 0
+        },
+        {
+            y: 0,
+            opacity: 1,
+            duration: .4,
+            stagger: .2
+        }
+    );
+
+
+const openMobileMenu = document.querySelector(".open-mobile-menu");
+openMobileMenu.addEventListener("click", ()=>{
+    mobileMenutTL.play();
+})
+
+
+const closeMobileMenu = document.querySelector(".close-mobile-menu");
+closeMobileMenu.addEventListener('click', ()=>{
+    mobileMenutTL.reverse();
+})
+
+const mobileModeOn = () => {
+    if(window.innerWidth <= 991){
+        document.querySelector("header .menu").classList.add("mobile");
+    }else{
+        document.querySelector("header .menu").classList.remove("mobile");
+    }
+};
+
+mobileModeOn();
+window.addEventListener("resize", function(event){
+    mobileModeOn();
+})
